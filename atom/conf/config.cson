@@ -1,0 +1,26 @@
+"*":
+  "":
+    source:
+      rust:
+        editor:
+          preferredLineLength: 120
+  core:
+    telemetryConsent: "limited"
+  editor:
+    fontSize: 11
+    preferredLineLength: 120
+    scrollPastEnd: true
+    showIndentGuide: true
+  "exception-reporting":
+    userId: "a0345f95-5a4d-421f-9e12-43fed5d40c05"
+  "linter-ui-default":
+    panelHeight: 147
+  "platformio-ide-terminal":
+    core: {}
+  sbt:
+    showStartupMessage: false
+  welcome:
+    showOnStartup: false
+".rust.source":
+  editor:
+    preferredLineLength: 120

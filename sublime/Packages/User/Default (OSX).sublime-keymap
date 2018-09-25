@@ -1,0 +1,5 @@
+[
+    { "keys": ["super+alt+left"], "command": "jump_back" },
+    { "keys": ["super+alt+right"], "command": "jump_forward" },
+    { "keys": ["ctrl+option+i"], "command": "reindent", "args": {"single_line": false}}
+]

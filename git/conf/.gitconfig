@@ -1,0 +1,20 @@
+[core]
+	excludesfile = ~/.git/.gitignore_global
+[user]
+	name = Rafael
+	email = 11751298+RafaelBa@users.noreply.github.com
+[includeIf "gitdir:~/Projects/**"]
+  path = ~/.git/Projects/.gitconfig
+[commit]
+	template = ~/.git/.stCommitMsg
+[alias]
+        graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+        graph2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+        graph3 = log --graph --decorate
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
