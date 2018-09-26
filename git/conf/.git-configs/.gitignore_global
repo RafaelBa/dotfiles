@@ -1,0 +1,6 @@
+*~
+.DS_Store
+/.metals
+/.metaserver
+/.classpath
+.java-version
