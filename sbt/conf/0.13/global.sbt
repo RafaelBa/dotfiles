@@ -9,10 +9,22 @@ def projectName(style: Style) = text(state ⇒ {
     project
   }, style)
 
+def gitExists = {
+  java.nio.file.Files.exists(java.nio.file.Paths.get("./.git"))
+}
+
+def branchName = {
+  if (gitExists) {
+    gitBranch(clean = fg(235).bg(34), dirty = fg(235).bg(214)).padLeft("  ").padRight(" ")
+  } else {
+    text("", fg(235).bg(26))
+  }
+}
+
 promptTheme := PromptTheme(
     List(
       text(" SBT ", fg(235).bg(26)),
-      gitBranch(clean = fg(235).bg(34), dirty = fg(235).bg(214)).padLeft("  ").padRight(" "),
+      branchName,
       projectName(fg(250).bg(235)).pad(" "),
       text(" ", NoStyle)
     ),
