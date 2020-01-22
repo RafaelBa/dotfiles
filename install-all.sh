@@ -1,16 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
-bash brew.sh
+brew install sbt scala git jenv rustup-init
+brew cask install alfred dash 1password docker firefox iterm2 sublime-text
 
-brew install zsh zsh-completion sbt scala git jenv rustup-init
-brew cask install alfred atom java java8 dash 1password docker firefox google-chrome iterm2
+zsh git/conf.sh
 
-brew cask install sublime-text atom
-
-bash zsh/conf.sh
-bash git/conf.sh
-
-bash atom/init.sh
-bash sbt/conf.sh
-bash jenv/conf.sh
-bash iTerm2/conf.sh
+zsh atom/init.sh
+zsh sbt/conf.sh
+zsh jenv/conf.sh
+zsh iTerm2/conf.sh
