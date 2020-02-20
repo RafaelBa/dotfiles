@@ -1,3 +1,4 @@
+import sbt.errorssummary.Plugin.autoImport._
 import com.scalapenos.sbt.prompt.SbtPrompt.autoImport._
 import com.scalapenos.sbt.prompt._
 
@@ -32,3 +33,8 @@ promptTheme := PromptTheme(
   )
 
 shellPrompt := (state ⇒ promptTheme.value.render(state))
+bloopAggregateSourceDependencies in Global := true
+bloopExportJarClassifiers in Global := Some(Set("sources"))
+
+reporterConfig := reporterConfig.value.withReverseOrder(true)
+

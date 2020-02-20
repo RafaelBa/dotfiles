@@ -1,0 +1,18 @@
+{
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+	"font_face": "Victor Code, Fira Code",
+	"font_options":
+	[
+		"subpixel_antialias",
+		"gray_antialias"
+	],
+	"font_size": 12,
+	"ignored_packages":
+	[
+		"Rust",
+		"Vintage"
+	],
+	"line_padding_bottom": 2,
+	"line_padding_top": 2
+}

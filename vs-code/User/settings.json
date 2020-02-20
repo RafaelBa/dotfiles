@@ -1,0 +1,32 @@
+{
+    "editor.fontFamily": "Victor Mono, Fira Code, Menlo for Powerline, Menlo, Monaco, 'Courier New', monospace",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "terminal.integrated.rendererType": "dom",
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.rulers": [
+        120
+    ],
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "New Moon",
+    "files.trimTrailingWhitespace": true,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "editor.fontLigatures": true,
+    "window.zoomLevel": 0,
+    "workbench.startupEditor": "newUntitledFile",
+    "metals.javaHome": "/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home",
+    "java.home": "/Library/Java/JavaVirtualMachines/openjdk-13.0.2.jdk/Contents/Home",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "java.errors.incompleteClasspath.severity": "ignore",
+    "python.jediEnabled": false,
+    "editor.fontSize": 11.3,
+    "haskell.hlint.run": "onSave"
+}
