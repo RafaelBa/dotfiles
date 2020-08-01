@@ -28,7 +28,7 @@ key_bindings:
   - { key: W, mods: Command, action: Quit }
 window:
   title: 🚀
-dynamic_title: false
+window.dynamic_title: false
 # ============
 # COLOUR
 # ============
