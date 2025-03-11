@@ -19,17 +19,18 @@ config.tab_bar_at_bottom = true
 -- This config disables MacOS window decoration but let's you resize and drag on the borders nonetheless
 -- config.window_decorations = "RESIZE"
 config.window_padding = {
-	left = 8,
-	right = 8,
-	top = 8,
-	bottom = 8,
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 
--- local modified_scheme = wezterm.color.get_builtin_schemes()["rose-pine"]
--- modified_scheme.background = "#2b2b2b"
--- config.color_schemes = { ["Modified Theme"] = modified_scheme }
--- config.color_scheme = "Modified Theme"
-config.color_scheme = "rose-pine-moon"
+-- fine-tune colour theme
+local custom_colour_scheme = wezterm.color.get_builtin_schemes()["rose-pine-moon"]
+-- pretty, lighter than background, grey
+custom_colour_scheme.selection_bg = "#455565"
+config.color_schemes = { ["rose-pine-moon-cu"] = custom_colour_scheme }
+config.color_scheme = "rose-pine-moon-cu"
 
 config.prefer_egl = true
 config.max_fps = 144
@@ -88,6 +89,17 @@ config.keys = {
 		mods = "LEADER",
 		action = wezterm.action.ActivateTabRelative(1),
 	},
+	-- TODO: clear selection from copy_mode on 'q' (quit)
+	-- clear selection on copy when pressing 'y' in copy_mode
+	-- {
+	-- 	key = "y",
+	-- 	mods = "NONE",
+	-- 	mode = "copy_mode",
+	-- 	action = wezterm.action.Multiple({
+	-- 		wezterm.action.CopyTo("ClipboardAndPrimarySelection"),
+	-- 		wezterm.action.ClearSelection,
+	-- 	}),
+	-- },
 	-- {
 	-- 	key = "u",
 	-- 	mods = "LEADER|CMD",
@@ -136,6 +148,8 @@ config.keys = {
 			end),
 		}),
 	},
+	-- tmux like key for copy mode
+	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 }
 -- Jump to tab 1 - 9 with Leader -> corresponding number
 -- Indexes start at 0
