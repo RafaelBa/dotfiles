@@ -110,6 +110,17 @@ config.keys = {
 	-- },
 	-- action = wezterm.action_callback(function(win, pane)
 	--   local tab = win:active_tab()
+	-- -- also found:
+	--           local tab = window:active_tab()
+	-- local panes = tab:panes()
+	-- local total_size = window:gui_window():get_dimensions().viewport_rows
+	-- if pane:get_dimensions().rows < target_size then
+	--   window:perform_action(
+	--     wezterm.action.AdjustPaneSize { 'Down', target_size - pane:get_dimensions().rows },
+	--     pane
+	--   )
+	-- end
+	-- -- end of "also found"
 	--   if tab then
 	--     local panes = tab:panes()
 	--     if #panes == 2 then -- Ensure there are exactly two panes
