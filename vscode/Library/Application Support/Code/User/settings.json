@@ -11,17 +11,45 @@
         80,
         120
     ],
-    "editor.formatOnSave": true,
     "files.trimTrailingWhitespace": true,
     "gitlens.currentLine.enabled": false,
     "gitlens.statusBar.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.enabled": false,
     "editor.fontLigatures": true,
-    "window.zoomLevel": 0,
     "workbench.startupEditor": "newUntitledFile",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.fontSize": 12.5,
-    "haskell.hlint.run": "onSave"
+    "haskell.hlint.run": "onSave",
+    "editor.formatOnSave": true,
+    "redhat.telemetry.enabled": false,
+    "svelte.enable-ts-plugin": true,
+    "window.zoomLevel": 0,
+    "todo-tree.general.tags": [
+        "TODO",
+        "FIXME",
+        "BUG",
+        "RefactorMe",
+        "biome-ignore"
+    ],
+    "todo-tree.highlights.customHighlight": {
+        "RefactorMe": {
+            "icon": "tools",
+            "iconColour": "#ADD8E6",
+            "gutterIcon": true
+        },
+        "biome-ignore": {
+            "icon": "alert-fill",
+            "iconColour": "#5EA5F7",
+            "gutterIcon": true,
+            "opacity": 0,
+            "foreground": "#ffcc00"
+        }
+    },
+    "workbench.editor.empty.hint": "hidden",
+    "git.ignoreMissingGitWarning": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    }
 }
