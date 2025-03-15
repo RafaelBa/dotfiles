@@ -7,12 +7,12 @@
 		"subpixel_antialias",
 		"gray_antialias"
 	],
-	"font_size": 12.5,
+	"font_size": 11.5,
 	"ignored_packages":
 	[
 		"Rust",
-		"Vintage"
+		"Vintage",
 	],
 	"line_padding_bottom": 2,
-	"line_padding_top": 2
+	"line_padding_top": 2,
 }
