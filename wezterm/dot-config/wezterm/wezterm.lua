@@ -103,31 +103,28 @@ config.keys = {
 	-- {
 	-- 	key = "u",
 	-- 	mods = "LEADER|CMD",
-	-- 	action = wezterm.action.AdjustPaneSize({
-	-- 		"DOWN",
-	-- 		wezterm.gui.screens()["active"].heigth * 0.8 - wezterm.pane.getDimension(),
+	-- 	action = wezterm.action.Multiple({
+	-- 		wezterm.action.ActivatePaneDirection("Up"),
+	-- 		wezterm.action_callback(function(window, pane)
+	-- 			local tab = window:active_tab()
+	-- 			if tab then
+	-- 				-- FIXME: `viewport_rows` does not exist on dimensions - I'll need to do an estimation of how many pixels a row occupies
+	-- 				local total_size = window:get_dimensions().viewport_rows
+	-- 				local target_size = math.floor(total_size * 0.8) + 1
+	-- 				local direction
+	-- 				if pane:get_dimensions().rows < target_size then
+	-- 					direction = "Down"
+	-- 				else
+	-- 					direction = "Up"
+	-- 				end
+	-- 				window:perform_action(
+	-- 					wezterm.action.AdjustPaneSize({ direction, target_size - pane:get_dimensions().rows }),
+	-- 					pane
+	-- 				)
+	-- 			end
+	-- 		end),
 	-- 	}),
 	-- },
-	-- action = wezterm.action_callback(function(win, pane)
-	--   local tab = win:active_tab()
-	-- -- also found:
-	--           local tab = window:active_tab()
-	-- local panes = tab:panes()
-	-- local total_size = window:gui_window():get_dimensions().viewport_rows
-	-- if pane:get_dimensions().rows < target_size then
-	--   window:perform_action(
-	--     wezterm.action.AdjustPaneSize { 'Down', target_size - pane:get_dimensions().rows },
-	--     pane
-	--   )
-	-- end
-	-- -- end of "also found"
-	--   if tab then
-	--     local panes = tab:panes()
-	--     if #panes == 2 then -- Ensure there are exactly two panes
-	--       win:perform_action(wezterm.action.AdjustPaneSize{"Up", 10}, pane)
-	--     end
-	--   end
-	-- end),
 	{
 		key = "u",
 		mods = "LEADER|CMD",
