@@ -4,6 +4,26 @@ local wezterm = require("wezterm")
 -- This will hold the configuration
 local config = wezterm.config_builder()
 
+local function move80percPane(moveDir, fixDir)
+	return function(window, pane)
+		local total_size = window:get_dimensions().pixel_height
+		-- Technically the pane can / will occupy more than 80% because window:get_dimensions gives you the whole height _without_ system window decoration
+		-- *but* it will include the tab-bar
+		local target_size = total_size * 0.8
+		local current_size = pane:get_dimensions().pixel_height
+		local direction
+		if current_size < target_size then
+			direction = fixDir
+		else
+			direction = moveDir
+		end
+		local change_in_pixels = target_size - current_size
+		local pixel_per_row = pane:get_dimensions().viewport_rows / current_size
+		local change_in_rows = math.floor(math.abs(change_in_pixels * pixel_per_row))
+		window:perform_action(wezterm.action.AdjustPaneSize({ direction, change_in_rows }), pane)
+	end
+end
+
 config.font = wezterm.font("FiraCode Nerd Font Mono")
 config.font_size = 11
 config.line_height = 1.3
@@ -100,37 +120,12 @@ config.keys = {
 	-- 		wezterm.action.ClearSelection,
 	-- 	}),
 	-- },
-	-- {
-	-- 	key = "u",
-	-- 	mods = "LEADER|CMD",
-	-- 	action = wezterm.action.Multiple({
-	-- 		wezterm.action.ActivatePaneDirection("Up"),
-	-- 		wezterm.action_callback(function(window, pane)
-	-- 			local tab = window:active_tab()
-	-- 			if tab then
-	-- 				-- FIXME: `viewport_rows` does not exist on dimensions - I'll need to do an estimation of how many pixels a row occupies
-	-- 				local total_size = window:get_dimensions().viewport_rows
-	-- 				local target_size = math.floor(total_size * 0.8) + 1
-	-- 				local direction
-	-- 				if pane:get_dimensions().rows < target_size then
-	-- 					direction = "Down"
-	-- 				else
-	-- 					direction = "Up"
-	-- 				end
-	-- 				window:perform_action(
-	-- 					wezterm.action.AdjustPaneSize({ direction, target_size - pane:get_dimensions().rows }),
-	-- 					pane
-	-- 				)
-	-- 			end
-	-- 		end),
-	-- 	}),
-	-- },
 	{
 		key = "u",
 		mods = "LEADER|CMD",
 		action = wezterm.action.Multiple({
 			wezterm.action.ActivatePaneDirection("Up"),
-			wezterm.action.AdjustPaneSize({ "Down", 50 }),
+			wezterm.action_callback(move80percPane("Up", "Down")),
 		}),
 	},
 	{
@@ -138,7 +133,7 @@ config.keys = {
 		mods = "LEADER|CMD",
 		action = wezterm.action.Multiple({
 			wezterm.action.ActivatePaneDirection("Down"),
-			wezterm.action.AdjustPaneSize({ "Up", 50 }),
+			wezterm.action_callback(move80percPane("Down", "Up")),
 		}),
 	},
 	{
