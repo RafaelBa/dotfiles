@@ -4,6 +4,7 @@ local wezterm = require("wezterm")
 -- This will hold the configuration
 local config = wezterm.config_builder()
 
+-- TODO: move function to source file of its own
 local function move80percPane(moveDir, fixDir)
 	return function(window, pane)
 		local total_size = window:get_dimensions().pixel_height
@@ -24,6 +25,12 @@ local function move80percPane(moveDir, fixDir)
 	end
 end
 
+-- TODO: -->8-- move to external config file for easier customisation
+-- Spawn a fish shell in login mode
+config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+-- TODO: --8<--
+--
+-- TODO: -->8--move to external config for easier customisation
 config.font = wezterm.font("FiraCode Nerd Font Mono")
 config.font_size = 11
 config.line_height = 1.3
@@ -32,7 +39,7 @@ config.freetype_load_flags = "FORCE_AUTOHINT"
 config.freetype_render_target = "Light"
 -- config.freetype_interpreter_version = 38
 config.front_end = "WebGpu"
-
+-- TODO: --8<--
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
@@ -110,7 +117,7 @@ config.keys = {
 		action = wezterm.action.ActivateTabRelative(1),
 	},
 	-- TODO: clear selection from copy_mode on 'q' (quit)
-	-- clear selection on copy when pressing 'y' in copy_mode
+	-- clear selection on copy when pressing 'y' in copy_mode (for reference; wezterm already does that)
 	-- {
 	-- 	key = "y",
 	-- 	mods = "NONE",
