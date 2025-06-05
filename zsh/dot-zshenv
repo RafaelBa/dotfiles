@@ -1,0 +1,10 @@
+
+# WARNING: Don't add PATH here - at least on MacOS all the system's folders will be added after the .zshenv file was loaded
+
+for conf_d_file in $HOME/.zsh.conf.d/zshenv/*.zsh; do
+  source $conf_d_file
+done
+
+#
+# Entries beyond this line are TODOs and should be moved to .zsh.conf.d
+# --------------------
