@@ -12,6 +12,9 @@ The best way to update confs that are out of sync is to call `stow --adopt <pack
 `_non-stow` folder contains configurations that have not yet been put into the structure `stow` can work with. These are basically todos.
 
 ## Modules
+### git
+The checked-in `.gitconfig` features a "include ~/.git-configs/local-config" section, where you can add computer-local global configurations, eg. GitHub or GitLab user-name and email.
+
 ### zsh
 Inspired by fish the zsh config has a conf.d folder, `.zsh.conf.d`. The toplevel configs read every entry in that folder in order of their appearance.
 
