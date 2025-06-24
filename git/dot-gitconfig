@@ -1,16 +1,34 @@
 [core]
 	excludesfile = ~/.git-configs/.gitignore_global
+	editor = nvim
 [commit]
 	template = ~/.git-configs/.stCommitMsg
-[include]
-	path = ~/.git-configs/local-config
-
 [alias]
-        graph = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
-        graph2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-        graph3 = log --graph --decorate
+	graph-current = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+	graph2-current = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+	graph3-current = log --graph --decorate
+	graph-all = graph-current --all
+	graph2-all = graph2-current --all
+	graph3-all = graph3 --all
+	graph = graph-current
+	graph2 = graph2-current
+	graph3 = graph3-current
 	ci = commit
 	co = checkout
+	wk = worktree
+[pull]
+	rebase = false
+[merge]
+	tool = nvimdiff
+[mergetool "nvimdiff"]
+	cmd = "nvim -d $MERGED -c \"aboveleft split $LOCAL | diffthis\" -c \"belowright vsplit $BASE | diffthis\" -c \"belowright vsplit $REMOTE | diffthis\" -c \"0tabnew $LOCAL | diffthis\" -c \"belowright vsplit $REMOTE | diffthis\" -c \"aboveleft vsplit $MERGED | diffthis\""
+[mergetool "vimdiff"]
+	layout = LOCAL,REMOTE / MERGED
+[color "diff"]
+	# Makes, among other, file names blue, so they are easier to spot in a diff
+	meta = blue bold
+[rerere]
+	enabled = true
 [credential]
 	helper = osxkeychain
 [filter "lfs"]
@@ -20,3 +38,6 @@
 	required = true
 [init]
 	defaultBranch = main
+[include]
+	# Set or override config specific to this local computer
+	path = ~/.git-configs/local-config
