@@ -57,4 +57,14 @@ More detailed information in stackoverflow posts
 - https://unix.stackexchange.com/questions/324359/why-a-login-shell-over-a-non-login-shell/324391#324391
 - https://unix.stackexchange.com/questions/38175/difference-between-login-shell-and-non-login-shell/46856#46856
 
+### bash
+`bash` follows the same `.bash.conf.d` approach as `zsh` does; see [zsh](#zsh) for more details. 
+Only difference is that both `.bashrc` and `.bash_profile` read from `.bash.conf.d/bash_env`, since `bash` does not have a `.bash_env` file
 
+#### Details
+- interactive `bash` shells read from `.bashrc` if available
+- login shells read from `.bash_profile`, `.bash_login`, or `.profile` - following this order it will load only the first one to exist!
+- when called neither as login shell nor in interactive mode it will look for `BASH_ENV` env var and try to source the file defined in there
+- when `bash` is called as `sh` alias, it will only read `.profile` when it is a login shell
+
+More details can be found in [Bash-Startup-Files](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)

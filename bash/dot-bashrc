@@ -1,0 +1,8 @@
+for conf_d_file in $HOME/.bash.conf.d/bash_env/*.sh; do
+  source $conf_d_file
+done
+
+for conf_d_file in $HOME/.bash.conf.d/*.sh; do
+  source $conf_d_file
+done
+
