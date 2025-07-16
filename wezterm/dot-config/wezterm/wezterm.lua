@@ -66,11 +66,24 @@ config.max_fps = 144
 config.send_composed_key_when_left_alt_is_pressed = true
 
 -- timeout is the time until wezterm exits leader-mode
-config.leader = { key = "b", mods = "CMD", timeout_milliseconds = 3000 }
+-- TODO: reiterate: CMD+b is a bit straining on the hand over time
+-- config.leader = { key = "b", mods = "CMD", timeout_milliseconds = 3000 }
+-- TODO reiterate: Using tmux prefix for now, as it has proven to be ergonomic in the past
+-- to avoid clashes with tmux there is a key config to send CTRL+b on CTRL+b-CTRL+b
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 3000 }
 
 -- TODO: Move to external file
 -- TODO: Update CMD-U and CMD-D to set to 80% of the screen
 config.keys = {
+	{
+		-- send CTRL+b on <leader>-CTRL-b, in case leader is CTRL-b
+		key = "b",
+		mods = "LEADER|CTRL",
+		action = wezterm.action.SendKey({
+			key = "b",
+			mods = "CTRL",
+		}),
+	},
 	{
 		key = "c",
 		mods = "LEADER",
@@ -129,7 +142,7 @@ config.keys = {
 	-- },
 	{
 		key = "u",
-		mods = "LEADER|CMD",
+		mods = "LEADER|CTRL",
 		action = wezterm.action.Multiple({
 			wezterm.action.ActivatePaneDirection("Up"),
 			wezterm.action_callback(move80percPane("Up", "Down")),
@@ -137,7 +150,7 @@ config.keys = {
 	},
 	{
 		key = "d",
-		mods = "LEADER|CMD",
+		mods = "LEADER|CTRL",
 		action = wezterm.action.Multiple({
 			wezterm.action.ActivatePaneDirection("Down"),
 			wezterm.action_callback(move80percPane("Down", "Up")),
