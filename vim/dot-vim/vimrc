@@ -2,3 +2,54 @@
 :syntax on
 :set number
 :set encoding=utf-8
+
+" Open new splits by default on the right and below respectively
+:set splitright
+:set splitbelow
+
+" Activate highlighting results on search
+:set hlsearch
+" Keeping <ESC> although it seems to wait on something until it commits to the
+" command
+:nnoremap <ESC> :noh<CR>
+" Fallback - maybe I'd get used to it
+:nnoremap <Space>h :noh<CR>
+
+" TODO: translate into vim-script and activate
+"vim.keymap.set({ "n", "v" }, "[b", ":bprevious<CR>")
+"vim.keymap.set({ "n", "v" }, "]b", ":bnext<CR>")
+:noremap <Space>bd :bdelete<CR>
+"
+"-- Window controls
+"-- TODO: add check that there is more than 1 window left, otherwise don't close
+"vim.keymap.set({ "n", "v" }, "<Space>wd", ":q<CR>")
+"
+"-- TODO: I need to figure out how to remap "move window" to <C-W><uppercase-LHJK>
+"
+"-- vim.keymap.set({ "n", "v" }, "<C-W>J", "<C-J>")
+"-- vim.keymap.del({ "n", "v" }, "<C-J>")
+"vim.keymap.set({ "n", "v" }, "<C-J>", "<C-W>j")
+"
+"-- vim.keymap.set({ "n", "v" }, "<C-W>K", "<C-K>")
+"-- vim.keymap.del({ "n", "v" }, "<C-K>")
+"vim.keymap.set({ "n", "v" }, "<C-K>", "<C-W>k")
+"
+"-- vim.keymap.set({ "n", "v" }, "<C-W>H", "<C-H>")
+"-- vim.keymap.del({ "n", "v" }, "<C-H>")
+"vim.keymap.set({ "n", "v" }, "<C-H>", "<C-W>h")
+"
+"-- vim.keymap.set({ "n", "v" }, "<C-W>L", "<C-L>")
+"-- vim.keymap.del({ "n", "v" }, "<C-L>")
+"vim.keymap.set({ "n", "v" }, "<C-L>", "<C-W>l")
+"
+" TODO: Not sure why these suddenly provoke errors with other mappings
+":noremap <Space>| :vsplit<CR>
+":noremap <Space>- :split<CR>
+
+"vim.keymap.set({ "n", "v" }, "<Space>|", ":vsplit<CR>")
+"vim.keymap.set({ "n", "v" }, "<Space>-", ":split<CR>")
+"vim.keymap.set({ "n", "v" }, "[t", ":tabprevious<CR>")
+"vim.keymap.set({ "n", "v" }, "]t", ":tabnext<CR>")
+"vim.keymap.set({ "n", "v" }, "<Space>td", ":tabclose<CR>")
+"vim.keymap.set({ "n", "v" }, "<Stace>tn", ":tabnew<CR>")
+
