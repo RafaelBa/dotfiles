@@ -46,4 +46,6 @@ vim.keymap.set({ "n", "v" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "[D]elete
 
 -- TODO: read current file path and open netrw at folder of file
 -- either I'll get errors when there's no file open (yet or anymore), or undefined behaviour and a path that isn't useful at all
-vim.keymap.set({ "n", "v" }, "<leader>e", "<cmd>vsplit .<cr>")
+vim.keymap.set({ "n", "v" }, "<leader>e", "<cmd>vsplit .<cr>", { desc = "Open file [E]xplorer" })
+
+vim.keymap.set("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit [a]ll" })
