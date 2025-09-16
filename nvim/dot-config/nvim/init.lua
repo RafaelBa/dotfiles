@@ -1,5 +1,6 @@
 require("settings.opts")
 require("settings.keymap")
+require("autocommands.line-numbers")
 
 -- NOTE: You can require modules in a non-failing way, eg. if the code is distributed and not every distribution has a local-settings file
 -- pcall(require, "local-keymap")
