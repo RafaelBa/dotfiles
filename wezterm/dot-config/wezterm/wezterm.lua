@@ -58,6 +58,10 @@ local custom_colour_scheme = wezterm.color.get_builtin_schemes()["rose-pine-moon
 custom_colour_scheme.selection_bg = "#455565"
 config.color_schemes = { ["rose-pine-moon-cu"] = custom_colour_scheme }
 config.color_scheme = "rose-pine-moon-cu"
+config.inactive_pane_hsb = {
+	saturation = 0.7,
+	brightness = 1.3,
+}
 
 config.prefer_egl = true
 config.max_fps = 144
@@ -71,6 +75,31 @@ config.send_composed_key_when_left_alt_is_pressed = true
 -- TODO reiterate: Using tmux prefix for now, as it has proven to be ergonomic in the past
 -- to avoid clashes with tmux there is a key config to send CTRL+b on CTRL+b-CTRL+b
 config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 3000 }
+
+-- --->8--- this could be moved to a file of its own
+-- in https://wezterm.org/config/lua/wezterm/on.html#example-opening-whole-scrollback-in-vim they also return the keymap dictionary - TODO: add the keymap here, too
+local brightness_steps = 0.2
+wezterm.on("increase-brightness", function(window)
+	local overrides = window:get_config_overrides() or { foreground_text_hsb = { brightness = 1.0 } }
+	local next_value = overrides.foreground_text_hsb.brightness + brightness_steps
+	overrides.foreground_text_hsb.brightness = next_value
+	window:set_config_overrides(overrides)
+end)
+
+wezterm.on("reset-brightness", function(window)
+	local overrides = window:get_config_overrides() or { foreground_text_hsb = { brightness = 1.0 } }
+	overrides.foreground_text_hsb.brightness = 1.0
+	window:set_config_overrides(overrides)
+end)
+
+wezterm.on("decrease-brightness", function(window)
+	local overrides = window:get_config_overrides() or { foreground_text_hsb = { brightness = 1.0 } }
+	local next_value = overrides.foreground_text_hsb.brightness - brightness_steps
+	overrides.foreground_text_hsb.brightness = next_value
+	window:set_config_overrides(overrides)
+end)
+
+-- ----8<---
 
 -- TODO: Move to external file
 -- TODO: Update CMD-U and CMD-D to set to 80% of the screen
@@ -173,6 +202,22 @@ config.keys = {
 	},
 	-- tmux like key for copy mode
 	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+	-- weirdly the key needs to be `+` (and `)`, and `_`) when using the `SHIFT` modifier, although it technically is `=`
+	{
+		key = "+",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.EmitEvent("increase-brightness"),
+	},
+	{
+		key = ")",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.EmitEvent("reset-brightness"),
+	},
+	{
+		key = "_",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.EmitEvent("decrease-brightness"),
+	},
 }
 -- Jump to tab 1 - 9 with Leader -> corresponding number
 -- Indexes start at 0
