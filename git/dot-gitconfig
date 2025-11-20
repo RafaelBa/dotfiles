@@ -18,12 +18,38 @@
 	wk = worktree
 [pull]
 	rebase = false
+
+## Merge and diff tools
 [merge]
 	tool = nvimdiff
+# Default all powerful 3-way-merge-view
 [mergetool "nvimdiff"]
-	cmd = "nvim -d $MERGED -c \"aboveleft split $LOCAL | diffthis\" -c \"belowright vsplit $BASE | diffthis\" -c \"belowright vsplit $REMOTE | diffthis\" -c \"0tabnew $LOCAL | diffthis\" -c \"belowright vsplit $REMOTE | diffthis\" -c \"aboveleft vsplit $MERGED | diffthis\""
+	cmd = "nvim --cmd 'let g:user_ide=\"kvim\"' -d $MERGED -c \"aboveleft split $LOCAL | diffthis\" -c \"belowright vsplit $BASE | diffthis\" -c \"belowright vsplit $REMOTE | diffthis\" -c \"0tabnew $LOCAL | diffthis\" -c \"belowright vsplit $REMOTE | diffthis\" -c \"aboveleft vsplit $MERGED | diffthis\""
+# Replicating git's <x>.1 view
+[mergetool "nvimdiff1"]
+	cmd = "nvim --cmd 'let g:user_ide=\"kvim\"' -d -O $LOCAL $REMOTE"
+# Replicating git's <x>.2 view
+[mergetool "nvimdiff2"]
+	cmd = "nvim --cmd 'let g:user_ide=\"kvim\"' -d -O $LOCAL $MERGED $REMOTE"
 [mergetool "vimdiff"]
 	layout = LOCAL,REMOTE / MERGED
+[diff]
+	tool = nvimdiff
+[difftool]
+	# TODO: To be confirmed - the prompt is supposed to protect you against constantly opening windows
+	prompt = false
+# Preferred default view for diffs
+[difftool "nvimdiff"]
+	cmd = "nvim --cmd 'let g:user_ide=\"kvim\"' -d -O $LOCAL $REMOTE"
+# Replicating git's <x>.1 view
+[difftool "nvimdiff1"]
+	cmd = "nvim --cmd 'let g:user_ide=\"kvim\"' -d -O $LOCAL $REMOTE"
+# Replicating git's <x>.2 view
+[difftool "nvimdiff2"]
+	cmd = "nvim --cmd 'let g:user_ide=\"kvim\"' -d -O $LOCAL $MERGED $REMOTE"
+
+
+
 [color "diff"]
 	# Makes, among other, file names blue, so they are easier to spot in a diff
 	meta = blue bold
