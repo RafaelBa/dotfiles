@@ -1,3 +1,10 @@
+[general]
+# IMPORTANT: Alacritty will first import in order of files provided and than override the import with the settings in this file
+import = [
+	# "~/.config/alacritty/themes/tomorrownight.toml",
+	# "~/.config/alacritty/themes/duotonedark.toml"
+	"~/.config/alacritty/local-font.toml"
+]
 
 [env]
 # define environment vars here, that Alacritty will set
@@ -7,27 +14,9 @@ opacity = 0.95
 padding = { x = 5, y = 0 }
 
 [font]
-size = 11.5
+size = 11
 offset = { x = 0, y = 2 }
 
-[font.bold]
-family = "FiraCode Nerd Font"
-#family = "Victor Mono"
-#style = "Bold"
 
-[font.italic]
-family = "FiraCode Nerd Font"
-#family = "Victor Mono"
-style = "Light Italic"
 
-[font.normal]
-family = "FiraCode Nerd Font"
-#family = "Victor Mono"
-style = "Light"
-
-[general]
-import = [
-	# "~/.config/alacritty/themes/tomorrownight.toml",
-	# "~/.config/alacritty/themes/duotonedark.toml"
-]
 

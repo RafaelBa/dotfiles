@@ -1,0 +1,11 @@
+[font.bold]
+family = "FantasqueSansM Nerd Font Mono"
+
+[font.italic]
+family = "FantasqueSansM Nerd Font Mono"
+style = "Light Italic"
+
+[font.normal]
+family = "FantasqueSansM Nerd Font Mono"
+style = "Light"
+

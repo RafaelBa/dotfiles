@@ -1,0 +1,11 @@
+[font.bold]
+family = "FiraCode Nerd Font"
+#style = "Bold"
+
+[font.italic]
+family = "FiraCode Nerd Font"
+style = "Light Italic"
+
+[font.normal]
+family = "FiraCode Nerd Font"
+style = "Light"
