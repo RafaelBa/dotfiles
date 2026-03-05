@@ -10,8 +10,8 @@ function check-with-git-ls {
 		fi
 		FINDS+=$CURRENT_FIND
 	done
-	# TODO: `printf` complains if `$FINDS` is empty, since it has not been given any arguments
-	printf $FINDS
+
+	printf ${FINDS:-""}
 }
 
 local TOKEN_FILENAME=pre-commit-tokens
