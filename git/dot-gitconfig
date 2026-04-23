@@ -15,6 +15,7 @@
 	graph3 = graph3-current
 	ci = commit
 	co = checkout
+	sw = switch
 	wk = worktree
 	unstage = restore --stage
 [pull]
