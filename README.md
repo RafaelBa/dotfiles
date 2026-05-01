@@ -7,10 +7,6 @@ The root folder (where this README is situated) is used for confs that can be fo
 #### Updating confs
 The best way to update confs that are out of sync is to call `stow --adopt <package>`. This will copy the existing files that cause conflicts into the repo and create links to where the files were. Since this is a git controlled repo you how all the power and all the possibilities for an ordered merge of the config files.
 
-
-### Folder Structure
-`_non-stow` folder contains configurations that have not yet been put into the structure `stow` can work with. These are basically todos.
-
 ## Modules
 ### git
 The checked-in `.gitconfig` features a "include ~/.git-configs/local-config" section, where you can add computer-local global configurations, eg. GitHub or GitLab user-name and email.
@@ -68,3 +64,21 @@ Only difference is that both `.bashrc` and `.bash_profile` read from `.bash.conf
 - when `bash` is called as `sh` alias, it will only read `.profile` when it is a login shell
 
 More details can be found in [Bash-Startup-Files](https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html)
+
+### Sublime Text
+#### Packages
+A list of packages I used Sublime Text last with
+- Advanced CSV
+- Compare Side-By-Side
+- Git
+- JsonTree
+- ProjectManager
+- Rust Enhanced
+- SublimeSBT
+
+### VS Code
+#### Extensions
+A list of packages I used VS Code lime Text last with
+- alefragnani.project-manager
+- eamodio.gitlens
+
