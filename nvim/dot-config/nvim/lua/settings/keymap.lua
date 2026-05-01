@@ -42,7 +42,7 @@ vim.keymap.set({ "n", "v" }, "<C-L>", "<C-W>l")
 vim.keymap.set({ "n", "v" }, "[t", "<cmd>tabprevious<cr>", { desc = "Previous [T]ab" })
 vim.keymap.set({ "n", "v" }, "]t", "<cmd>tabnext<cr>", { desc = "Next [T]ab" })
 vim.keymap.set({ "n", "v" }, "<leader>td", "<cmd>tabclose<cr>", { desc = "[D]elete Tab" })
-vim.keymap.set({ "n", "v" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "[D]elete Tab" })
+vim.keymap.set({ "n", "v" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "[N]ew Tab" })
 
 -- TODO: read current file path and open netrw at folder of file
 -- either I'll get errors when there's no file open (yet or anymore), or undefined behaviour and a path that isn't useful at all
