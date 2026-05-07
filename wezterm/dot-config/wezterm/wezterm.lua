@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 
 -- This will hold the configuration
 local config = wezterm.config_builder()
+config.term = "wezterm"
 
 -- TODO: move function to source file of its own
 local function move80percPane(moveDir, fixDir)
