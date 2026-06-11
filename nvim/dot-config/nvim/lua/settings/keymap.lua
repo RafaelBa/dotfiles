@@ -6,7 +6,12 @@ vim.g.mapleader = " "
 -- Buffer controls
 -- TODO: Write / use script to change buffer before deleting this buffer
 -- deleting a buffer that is open in a window will close the window, too
-vim.keymap.set({ "n", "v" }, "<leader>bd", "<cmd>bdel<cr>", { desc = "[d]elete Buffer" })
+vim.keymap.set(
+	{ "n", "v" },
+	"<leader>bd",
+	"<cmd>bp<bar>sp<bar>bn<bar>bd<cr>",
+	{ desc = "[d]elete Buffer (leave window open)" }
+)
 vim.keymap.set({ "n", "v" }, "<leader>bD", "<cmd>bdel<cr>", { desc = "[D]elete Buffer and close window" })
 vim.keymap.set({ "n", "v" }, "[b", "<cmd>bprev<cr>", { desc = "Prev [b]uffer" })
 vim.keymap.set({ "n", "v" }, "]b", "<cmd>bnext<cr>", { desc = "Next [b]uffer" })
@@ -49,3 +54,23 @@ vim.keymap.set({ "n", "v" }, "<leader>tn", "<cmd>tabnew<cr>", { desc = "[D]elete
 vim.keymap.set({ "n", "v" }, "<leader>e", "<cmd>vsplit .<cr>", { desc = "Open file [E]xplorer" })
 
 vim.keymap.set("n", "<leader>qa", "<cmd>qa<cr>", { desc = "Quit [a]ll" })
+
+-- Spelling
+local addSpellingTo = function(lang)
+	local current_spelllang = vim.o.spelllang
+	vim.o.spelllang = lang
+	vim.cmd("spellgood " .. vim.fn.expand("<cword>"))
+	vim.o.spelllang = current_spelllang
+end
+
+-- Remap "add to internal word list"
+vim.keymap.set({ "n", "v" }, "zGi", "zG", { desc = "Add to internal word list" })
+
+-- TODO: > In Visual mode the selected characters are added as a word (including white space!).
+-- This is why this is only set to normal-mode
+vim.keymap.set({ "n" }, "zGg", function()
+	addSpellingTo("de")
+end, { desc = "[g]erman" })
+vim.keymap.set({ "n" }, "zGe", function()
+	addSpellingTo("en_gb")
+end, { desc = "[e]nglish" })
