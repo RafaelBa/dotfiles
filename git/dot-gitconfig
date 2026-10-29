@@ -17,6 +17,8 @@
 	co = checkout
 	sw = switch
 	wk = worktree
+	mt = mergetool
+	dt = difftool
 	unstage = restore --stage
 [pull]
 	rebase = false
